@@ -1,6 +1,7 @@
 # Erxes automation tool
 
 For those who have passionate to contribution
+[vim supported]
 
 ### Requirements
 - [Install Golang](https://golang.org/doc/install)
@@ -21,7 +22,7 @@ const (
 
 ```
 # Replace with your daily report website
-		_, err := mack.Tell(browser, `open location "https://trello.com/"`)
+ _, err := mack.Tell(browser, `open location "https://trello.com/"`)
 ```
 
 ```
