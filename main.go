@@ -15,7 +15,7 @@ import (
 
 // Path of erxes repos
 const (
-	Erxes             = "path/to/erxes/"
+	Erxes             = "path/to/erxes"
 	ErxesAPI          = "path/to/erxes-api"
 	ErxesIntegrations = "path/to/erxes-integrations"
 )
@@ -110,7 +110,7 @@ func checkMonthlyReport() {
 }
 
 func checkDailyStandUp() {
-	sendNotification("Psst 🙋🙋‍♀️", "Let's write it right away", "Don't forget to report daily report")
+	sendNotification("Psst 🙋🙋‍♀️", "Let's write it right away", "Don't forget the daily report")
 
 	_, err := mack.Tell("Notes", createNote())
 	if err != nil {
@@ -141,10 +141,13 @@ func createNote() string {
 
 	currentYear, currentMonth, _ := now.Date()
 
-	yesterday := fmt.Sprintf("[%d/%d/%d] What did you do yesterday? \n", int(currentMonth), now.Day()-1, currentYear)
-	today := fmt.Sprintf("[%d/%d/%d] What will you do today? \n", int(currentMonth), now.Day(), currentYear)
+	today := now.Day()
+	parsedMonth := int(currentMonth)
 
-	body := yesterday + "\n" + today
+	body := fmt.Sprintf(`
+		[%d/%d/%d] What did you do yesterday?
+		[%d/%d/%d] What will you do today?
+	`, parsedMonth, today-1, currentYear, parsedMonth, today, currentYear)
 
 	noteAppleScript := fmt.Sprintf(`
 		tell application "Notes"
@@ -183,7 +186,7 @@ func executeSelectedUtil(SelectedRow int) {
 		renderLog("Successfully removed all dbs")
 
 	case 3:
-		cmd := exec.Command("yarn", "loadInitialData")
+		cmd := exec.Command(ErxesAPI, "yarn", "loadInitialData")
 		cmd.Dir = ErxesAPI
 		err := cmd.Run()
 		if err != nil {
@@ -240,6 +243,7 @@ func renderList() {
 		"[0] start erxes project",
 		"[1] mongo remove erxes, erxes-integrations db",
 		"[2] mongo remove all db",
+		"[3] load initial data",
 	}
 
 	list.TextStyle = ui.NewStyle(ui.ColorYellow)
