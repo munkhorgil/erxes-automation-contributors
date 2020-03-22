@@ -26,6 +26,6 @@ const (
 ```
 
 ```
- cd path/to/erxes-automation-contributors
+ cd path/to/erxes-automation-contributors/src
  go run main.go
 ```

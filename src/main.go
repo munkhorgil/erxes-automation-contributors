@@ -169,7 +169,7 @@ func executeSelectedUtil(SelectedRow int) {
 			panic(err)
 		}
 	case 1:
-		cmd := exec.Command("mongo", "./clearDb.js")
+		cmd := exec.Command("mongo", "./scripts/clearDb.js")
 		err := cmd.Run()
 		if err != nil {
 			panic(err)
@@ -177,7 +177,7 @@ func executeSelectedUtil(SelectedRow int) {
 
 		renderLog("Successfully removed erxes dbs")
 	case 2:
-		cmd := exec.Command("mongo", "./removeAllDb.js")
+		cmd := exec.Command("mongo", "./scripts/removeAllDb.js")
 		err := cmd.Run()
 		if err != nil {
 			panic(err)
@@ -331,8 +331,8 @@ func initUI() {
 func main() {
 	greetings()
 
-	checkDailyStandUp()
-	checkMonthlyReport()
+	// checkDailyStandUp()
+	// checkMonthlyReport()
 
 	initUI()
 
