@@ -184,16 +184,6 @@ func executeSelectedUtil(SelectedRow int) {
 		}
 
 		renderLog("Successfully removed all dbs")
-
-	case 3:
-		cmd := exec.Command(ErxesAPI, "yarn", "loadInitialData")
-		cmd.Dir = ErxesAPI
-		err := cmd.Run()
-		if err != nil {
-			panic(err)
-		}
-
-		renderLog("Successfully loaded initial data")
 	}
 }
 
@@ -243,7 +233,6 @@ func renderList() {
 		"[0] start erxes project",
 		"[1] mongo remove erxes, erxes-integrations db",
 		"[2] mongo remove all db",
-		"[3] load initial data",
 	}
 
 	list.TextStyle = ui.NewStyle(ui.ColorYellow)
@@ -327,12 +316,11 @@ func initUI() {
 	renderFeatures()
 	renderList()
 }
-
 func main() {
 	greetings()
 
-	// checkDailyStandUp()
-	// checkMonthlyReport()
+	checkDailyStandUp()
+	checkMonthlyReport()
 
 	initUI()
 
