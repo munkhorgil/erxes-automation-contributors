@@ -1,7 +1,6 @@
 # Erxes automation tool
 
-For those who have passionate to contribution
-[vim supported]
+For those who have a passion for contribution [vim supported]
 
 ### Requirements
 - [Install Golang](https://golang.org/doc/install)
