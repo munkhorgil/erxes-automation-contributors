@@ -1,5 +1,7 @@
 # Erxes automation tool
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/65029a0136564080877ca651ed452091)](https://app.codacy.com/manual/munkhorgil/erxes-automation-contributors?utm_source=github.com&utm_medium=referral&utm_content=munkhorgil/erxes-automation-contributors&utm_campaign=Badge_Grade_Dashboard)
+
 For those who have a passion for contribution [vim supported]
 
 ### Requirements
